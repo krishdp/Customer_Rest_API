@@ -128,11 +128,30 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+
+    ],
+}
+
+
+SPECTACULAR_SETTINGS = {
+    'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
+    'VERSION': '1.0.0',
+    'SERVERS': [
+        # {"url": "https://dev.iqrate.io", "description": "Dev Server"}
+    ],
+    # OTHER SETTINGS
+    # list of authentication/permission classes for spectacular's views.
+    'SERVE_PERMISSIONS': [],
+    # None will default to DRF's AUTHENTICATION_CLASSES
+    'SERVE_AUTHENTICATION': None,
 }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-9
